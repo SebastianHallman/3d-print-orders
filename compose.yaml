@@ -1,0 +1,16 @@
+services:
+  backend:
+    build: ./backend/print-orders-api
+    ports: 
+     - "8080:8080"
+  mysql:
+    image: mysql:8.4
+    environment:
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+     - mysql_data:/var/lib/mysql
+volumes:
+  mysql_data:
