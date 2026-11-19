@@ -1,20 +1,23 @@
 package com.sebastianhallman.print_orders_api;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 
 @Service 
 public class OrderService {
+    private  final PrintOrderRepository printOrderRepository;
 
-    private ArrayList<PrintOrder> orders = new ArrayList<PrintOrder>();
+    public OrderService(PrintOrderRepository printOrderRepository){
+        this.printOrderRepository = printOrderRepository;
+    }
 
-    public ArrayList<PrintOrder> getAllOrders() {
-        return orders;
+    public List<PrintOrder> getAllOrders() {
+        return this.printOrderRepository.findAll();
     }
 
     public void addOrder(String name, String model) {
-        orders.add(new PrintOrder(orders.size(), name, model, OrderStatus.QUEUED));
+        
     }
     
 }

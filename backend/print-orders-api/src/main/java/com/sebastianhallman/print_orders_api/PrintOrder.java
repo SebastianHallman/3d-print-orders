@@ -1,10 +1,23 @@
 package com.sebastianhallman.print_orders_api;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity 
 public class PrintOrder {
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String customer;
     private String model;
+    @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    protected PrintOrder () {}
 
     public PrintOrder(int id, String customer, String model, OrderStatus status) {
         this.id = id;
@@ -12,30 +25,7 @@ public class PrintOrder {
         this.model = model;
         this.status = status;
     }
-
-    @Override 
-    public String toString() {
-        String statusText;
-
-        switch (this.status) {
-            case QUEUED:
-                statusText = "Queued";
-                break;
-            case PRINTING:
-                statusText = "Printing";
-                break;
-            case COMPLETED:
-                statusText = "Completed";
-                break;
-            default:
-                statusText = "Unknown";
-                break;
-        }
-
-
-        return "Order #" + this.id + " | " + this.customer + " has an order on " + this.model + " | Current status: " + statusText;
-    }
-
+    
     public int getId() {
         return this.id;
     }

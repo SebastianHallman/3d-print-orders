@@ -1,6 +1,7 @@
 package com.sebastianhallman.print_orders_api;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +28,7 @@ public class OrderController {
     }
 
     @GetMapping("")
-    public ArrayList<PrintOrder> getOrders() {
+    public List<PrintOrder> getOrders() {
         return this.orderService.getAllOrders();
     }
 
