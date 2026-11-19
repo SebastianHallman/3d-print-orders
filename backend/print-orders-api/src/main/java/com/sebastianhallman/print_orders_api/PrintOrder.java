@@ -19,11 +19,10 @@ public class PrintOrder {
 
     protected PrintOrder () {}
 
-    public PrintOrder(int id, String customer, String model, OrderStatus status) {
-        this.id = id;
+    public PrintOrder(String customer, String model) {
         this.customer = customer;
         this.model = model;
-        this.status = status;
+        this.status = OrderStatus.QUEUED;
     }
     
     public int getId() {

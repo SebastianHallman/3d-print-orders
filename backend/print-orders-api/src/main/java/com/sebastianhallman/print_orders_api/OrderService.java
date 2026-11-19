@@ -17,7 +17,7 @@ public class OrderService {
     }
 
     public void addOrder(String name, String model) {
-        
+        this.printOrderRepository.save(new PrintOrder(name, model));
     }
     
 }
