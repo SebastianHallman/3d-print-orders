@@ -20,7 +20,7 @@ export default function OrderForm() {
     };
 
     if (!order.name || !order.model) {
-      setMessage("Fyll i namn och modell.");
+      setMessage("Enter your name and the model.");
       return;
     }
 
@@ -37,14 +37,14 @@ export default function OrderForm() {
       });
 
       if (!response.ok) {
-        setMessage(`Ordern kunde inte skickas (HTTP ${response.status}).`);
+        setMessage(`Could not submit the order (HTTP ${response.status}).`);
         return;
       }
 
       form.reset();
-      setMessage("Ordern togs emot.");
+      setMessage("Order received.");
     } catch {
-      setMessage("Ordern kunde inte skickas. Kontrollera API:t och webbläsarens konsol.");
+      setMessage("Could not submit the order. Check the API and your browser console.");
     } finally {
       setIsSubmitting(false);
     }
@@ -53,25 +53,25 @@ export default function OrderForm() {
   const fieldClass = "rounded-md border border-current/25 px-3 py-2";
 
   return (
-    <form className="grid gap-4" onSubmit={submitOrder}>
+    <form lang="en" className="grid gap-4" onSubmit={submitOrder}>
       <label className="grid gap-1">
-        Namn
+        Name
         <input className={fieldClass} name="name" autoComplete="name" required />
       </label>
       <label className="grid gap-1">
-        Modell
+        Model
         <input className={fieldClass} name="model" required />
       </label>
       <label className="grid gap-1">
-        Anteckning (valfritt)
-        <textarea className={fieldClass} name="notes" rows={3} />
+        Notes (optional)
+        <textarea className={fieldClass} name="notes" rows={3} placeholder="Material, color, done by date etc"/>
       </label>
       <button
         className="rounded-md bg-foreground px-4 py-2 font-medium text-background disabled:opacity-50"
         type="submit"
         disabled={isSubmitting}
       >
-        {isSubmitting ? "Skickar…" : "Skicka testorder"}
+        {isSubmitting ? "Submitting…" : "Submit order"}
       </button>
       <p role="status">{message}</p>
     </form>

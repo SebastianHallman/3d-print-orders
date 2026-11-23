@@ -5,6 +5,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.servlet.util.matcher.PathPatternRequestMatcher;
+
 
 @Configuration 
 public class SecurityConfig {
@@ -15,7 +17,8 @@ public class SecurityConfig {
             .requestMatchers(HttpMethod.GET, "/orders/status").permitAll()
                 .anyRequest().authenticated()
         ).formLogin(Customizer.withDefaults())
-        .cors(Customizer.withDefaults()
+        .cors(Customizer.withDefaults())
+        .csrf(config -> config.ignoringRequestMatchers((PathPatternRequestMatcher.withDefaults().matcher(HttpMethod.POST, "/orders/add")))
     );
         return http.build();
     }
