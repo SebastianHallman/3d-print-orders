@@ -17,8 +17,8 @@ public class OrderService {
         return this.printOrderRepository.findAll();
     }
 
-    public void addOrder(String name, String model) {
-        this.printOrderRepository.save(new PrintOrder(name, model));
+    public void addOrder(String name, String model, String notes) {
+        this.printOrderRepository.save(new PrintOrder(name, model, notes));
     }
     
     public Optional<PrintOrder> updateOrder(int id, String status){

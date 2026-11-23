@@ -49,7 +49,7 @@ public class OrderController {
 
     @PostMapping("/add")
     public String addOrder(@RequestBody CreateOrderRequest order) {
-        this.orderService.addOrder(order.name(), order.model());
+        this.orderService.addOrder(order.name(), order.model(), order.notes());
         return "Order received";
     }
 
