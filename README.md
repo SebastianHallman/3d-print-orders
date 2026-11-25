@@ -14,3 +14,5 @@ For the simplest approach, clone this repository and run ```docker compose up```
 ## AI usage
 
 I used generative AI as a teacher to learn Java. All code has been written by myself, but I have used AI to ask about the code when needed.
+
+As the focus of the project is to learn Java, I use AI to quickly generate a frontend. I adjust the design by reprompting an do small edits manully to get the design I want.

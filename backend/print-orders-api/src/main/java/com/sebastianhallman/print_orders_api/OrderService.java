@@ -47,6 +47,7 @@ public class OrderService {
 
         order.setStatus(orderStatus);
         return Optional.of(this.printOrderRepository.save(order));  
+        
     }    
 
     public Optional<PrintOrder> getOrder(int id) {

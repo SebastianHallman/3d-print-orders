@@ -1,8 +1,16 @@
 @import "tailwindcss";
 
+@theme {
+  --color-cocoa: #784321;
+  --color-rose: #d88180;
+  --color-blush: #f7b1b0;
+  --color-cream: #feeac7;
+  --color-pistachio: #cad182;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-cream);
+  --foreground: var(--color-cocoa);
 }
 
 @theme inline {
@@ -14,9 +22,14 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: var(--color-cocoa);
+    --foreground: var(--color-cream);
   }
+}
+
+::selection {
+  background: var(--color-blush);
+  color: var(--color-cocoa);
 }
 
 body {

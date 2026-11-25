@@ -33,28 +33,32 @@ public class OrderController {
         return "The API is running";
     }
 
+    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
     @GetMapping("")
     public List<PrintOrder> getOrders() {
         return this.orderService.getAllOrders();
     }
 
-    @GetMapping ("/{id}")
+    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+    @GetMapping("/{id}")
     public ResponseEntity<PrintOrder> getOrder(@PathVariable("id") int id) {
         return ResponseEntity.of(this.orderService.getOrder(id));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
     @DeleteMapping("/{id}")
     public  ResponseEntity<PrintOrder> deleteOrder(@PathVariable("id") int id) {
         return ResponseEntity.of(this.orderService.deleteOrder(id));
     }
 
-    @CrossOrigin 
+    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
     @PostMapping("/add")
     public String addOrder(@RequestBody CreateOrderRequest order) {
         this.orderService.addOrder(order.name(), order.model(), order.notes());
         return "Order received";
     }
 
+    @CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
     @PatchMapping("/status/{id}")
     public ResponseEntity<PrintOrder> updateOrder(@PathVariable("id") int id, @RequestBody UpdateOrderRequest orderStatus) {
         if (orderStatus.status() == null || !utils.isValidStatus(orderStatus.status())) {
