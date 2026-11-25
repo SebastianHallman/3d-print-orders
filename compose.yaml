@@ -1,6 +1,10 @@
 services:
   frontend:
     build: ./frontend
+    environment:
+      SPOOLMAN_URL: ${SPOOLMAN_URL:-}
+      SPOOLMAN_USERNAME: ${SPOOLMAN_USERNAME:-}
+      SPOOLMAN_PASSWORD: ${SPOOLMAN_PASSWORD:-}
     ports:
       - "3000:3000"
   backend:
